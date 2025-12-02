@@ -144,44 +144,107 @@ public class Main {
                     dañoenemigo = 50;
                     break;
             }
-            while (true) {
-                while (true) {
-                    int ataque = rand.nextInt(6);
-                    System.out.println("Estas son las estas de tu enemigo " + enemigoactual);
-                    System.out.println("PS = " + PSenemigo);
-                    System.out.println("Multiplicador de daño = " + multiplicadordañoenemigo);
-                    System.out.println("Daño = " + dañoenemigo);
-                    System.out.println("Que accion vas a realizar para defenderte de este malechor?");
-                    System.out.println("Tus opciones son:");
-                    System.out.println("1. Ataque fisico");
-                    System.out.println("2. Ataque magico");
+            while (PS >= 0 && PSenemigo >= 0) {
+                System.out.println("Estas son las estas de tu enemigo " + enemigoactual);
+                System.out.println("PS = " + PSenemigo);
+                System.out.println("Multiplicador de daño = " + multiplicadordañoenemigo);
+                System.out.println("Daño = " + dañoenemigo);
+                System.out.println("Que accion vas a realizar para defenderte de este malechor?");
+                System.out.println("Tus opciones son:");
+                System.out.println("1. Ataque fisico");
+                System.out.println("2. Ataque magico");
 
-                    String opciondeataque = sc.nextLine();
-                    while (ataque == 1,2,3,4;;;;;) {
-                        if (opciondeataque.equals("1")) {
-                            int dañofisicototal = (int) (dañofisico * multiplicadordaño);
-                            PSenemigo -= dañofisicototal;
-                            System.out.println("Has usado tu ataque fisico quitandole un total de " + dañofisicototal + " de vida a tu enemigo");
-                            System.out.println("Vida restante del enemigo: " + PSenemigo);
-                        } else if (opciondeataque.equals("2")) {
-                            int dañomagicototal = (int) (dañomagico * multiplicadordaño);
-                            PSenemigo -= dañomagicototal;
-                            System.out.println("Has usado tu ataque magico quitandole un total de " + dañomagicototal + " de vida a tu enemigo");
-                            System.out.println("Vida restante del enemigo: " + PSenemigo);
-                        }
+                String opciondeataque = sc.nextLine();
+                int ataque = rand.nextInt(6) + 1;
+                if (ataque == 1 || ataque == 2 || ataque == 3 || ataque == 4) {
+                    if (opciondeataque.equals("1")) {
+                        int dañofisicototal = (int) (dañofisico * multiplicadordaño);
+                        PSenemigo -= dañofisicototal;
+                        System.out.println("Has usado tu ataque fisico quitandole un total de " + dañofisicototal + " de vida a tu enemigo");
+                        System.out.println("Vida restante del enemigo: " + PSenemigo);
                     }
-                    if (ataque == 3){
+                    if (ataque == 5) {
                         System.out.println("Has fallado el ataque y no hiciste daño a tu rival");
                     }
-                    if (PSenemigo <= 0) {
-                        System.out.println("Eliminaste a tu enemigo " + enemigoactual);
-                        PSenemigo += 5;
+                    if (ataque == 6) {
+                        System.out.println("Has conseguido hacer un critico!!");
+                        System.out.println("Tu daño es multiplicado por 1.5 que de normal");
+                        int dañofisicototal = (int) ((dañofisico * multiplicadordaño) * 1.5);
+                    }
+
+                }
+                if (opciondeataque.equals(23) && PM >= 25) {
+                    if (opciondeataque.equals("2")) {
+                        int dañomagicototal = (int) (dañomagico * multiplicadordaño);
+                        PSenemigo -= dañomagicototal;
+                        System.out.println("Has usado tu ataque magico quitandole un total de " + dañomagicototal + " de vida a tu enemigo");
+                        System.out.println("Vida restante del enemigo: " + PSenemigo);
+                    } else if (PM < 25) {
+                        System.out.println("No tienes energia mistica para atacar con un ataque magico");
+                    }
+                    double dañototalenemigo = dañoenemigo * multiplicadordañoenemigo;
+                    System.out.println("El enemigo te ataco quitandote un total de " + dañototalenemigo);
+                    System.out.println("Dejandote a " + PS);
+                }
+            }
+            if (PSenemigo <= 0) {
+                PSenemigo += 5;
+                System.out.println("Enorabuena derrotaste a tu enemigo y defendiste españa de sus malechores");
+                System.out.println("Pero aun hay mucho camino por recorrer y muchos enemigos que derrotar");
+                System.out.println("Pero en tu larga travesia encuentras un magnifico kebab que te vende suministros, que deseas comprarle");
+                System.out.println("1. kebab + 25 de vida");
+                System.out.println("2. bandera de españa + 25 de PM");
+                System.out.println("3. spray de pimienta + 5 de daño fisico");
+                System.out.println("4. siesta descomunal + 0.05 de multiplicador de daño");
+                String item1 = "kebab";
+                String item2 = "banderadeespañ";
+                String item3 = "spraypimienta";
+                String item4 = "siestadescomunal";
+                int elecciondecompra = sc.nextInt();
+                String itemComprado = null;
+
+                switch (elecciondecompra) {
+                    case 1:
+                        PS += 25;
+                        itemComprado = item1;
+                        System.out.println("Compraste " + item1 + " PS actual: " + PS);
                         break;
+                    case 2:
+                        PM += 25;
+                        itemComprado = item2;
+                        System.out.println("Compraste " + item2 + " PM actual: " + PM);
+                        break;
+                    case 3:
+                        dañofisico += 5;
+                        itemComprado = item3;
+                        System.out.println("Compraste " + item3 + " Daño físico actual: " + dañofisico);
+                        break;
+                    case 4:
+                        multiplicadordaño += 0.05;
+                        itemComprado = item4;
+                        System.out.println("Compraste " + item4 + " Multiplicador de daño actual: " + multiplicadordaño);
+                        break;
+                    default:
+                        System.out.println("No compraste nada.");
+                        break;
+                }
+
+                if (itemComprado != null) {
+                    for (int i = 0; i < inventario.length; i++) {
+                        if (inventario[i] == null) {
+                            inventario[i] = itemComprado;
+                            break;
+                        }
                     }
                 }
-                double dañototalenemigo = dañoenemigo * multiplicadordañoenemigo;
-                System.out.println("El enemigo te ataco quitandote un total de " + dañototalenemigo);
-                System.out.println("Dejandote a " + PS);
+
+                System.out.print("Inventario actual: ");
+                for (String it : inventario) {
+                    if (it != null) {
+                        System.out.print(it + ", ");
+                    }
+                }
+                break;
             }
         }
     }
