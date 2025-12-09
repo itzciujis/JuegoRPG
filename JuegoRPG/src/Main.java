@@ -6,249 +6,212 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
 
-        int PSenemigo = 0;
-        double multiplicadordañoenemigo = 0;
-        int dañoenemigo = 0;
-        int caudillo = 1;
-        int socialista = 2;
-        int personanormla = 3;
-        int enfermitodetwiter = 4;
-        int emosinfuturo = 5;
-        int indio = 6;
+        String[] enemigos = {"Amego Segarro", "Pedro Sanchez", "Charo", "Maeb", "Reina del brillo", "Repartidor de Uber Eats"};
+        String[] recompensas = {"Segarro", "Liberacion de el comunismo", "Diploma de machista oficial",
+                "Poder ancestral de la sabiduria", "Bicicleta de Uber Eats", "Cupon de 5 leuros",
+                "Liberacion de IVA", "Spray anti segarros"};
+        String[] inventario = new String[10];
+        String[] interaccion = {"Normal", "Normal", "Normal", "Normal", "Critico", "Esquivado"};
+
         int PS = 0;
         int PM = 0;
-        double multiplicadordaño = 0;
-        int dañofisico = 0;
-        int dañomagico = 0;
+        int dañoFisico = 0;
+        int dañoMagico = 0;
         int oro = 0;
-        PSenemigo = 0;
+        double multiplicador = 0;
 
-        String[] enemigos = {"Amego segarro", "Pedro Sanchez", "Charo", "Maeb", "Reina del brillo", "Repartidor de uber eats",};
-        String[] recompensas = {"Segarro", "Liberacion de el comunismo", "Diploma de machista oficial", "Poder ancetral de la sabiduria", "Bicicleta de uber eats", "Cupon de 5 leuros", "Liberacion de IVA", "Spray anti segarros",};
-        String[] inventario = new String[10];
-        String[] interraccion = {"Normal", "Normal", "Normal", "Normal", "Normal", "Critico", "Esquivado",};
         while (true) {
-            System.out.println("Bienvenido al salvaje y despiadado mundo de Barcelona, como te llamas joven aventurero?");
-            String nombrepersonaje = sc.nextLine();
-            System.out.println("Que clase de persona eres?");
-            System.out.println("1.Caudillo de españa");
-            System.out.println("2.Socialista comunista");
-            System.out.println("3.Persona nomral");
-            System.out.println("4.Enfermito del twiter");
-            System.out.println("5.Emo sin futuro");
-            System.out.println("6.Indio");
-            int selecionpersonaje = sc.nextInt();
+            System.out.println("Bienvenido al mundo de Barcelona, cómo te llamas? \uD83C\uDF06 \uD83D\uDCAC");
+            String nombrePersonaje = sc.nextLine();
+
+            System.out.println("Elige tu clase: \uD83C \uDF93✨");
+            System.out.println("1. Caudillo de España \uD83D\uDEE1\uFE0F \uD83D\uDC51");
+            System.out.println("2. Socialista comunista ☭\uD83D \uDFE5");
+            System.out.println("3. Persona normal \uD83D\uDE42");
+            System.out.println("4. Enfermito del Twitter \uD83D\uDC26 \uD83E\uDD12");
+            System.out.println("5. Emo sin futuro \uD83D\uDDA4 \uD83D\uDE14");
+            System.out.println("6. Indio \uD83C\uDFF9 \uD83C\uDF04");
+
+            int seleccion = sc.nextInt();
             sc.nextLine();
-            if (selecionpersonaje == 1) {
-                PS = 200;
-                PM = 10;
-                multiplicadordaño = 1.5;
-                dañofisico = 30;
-                dañomagico = 10;
+
+            if (seleccion == 1) {
+                PS = 120;
+                PM = 30;
+                multiplicador = 1.2;
+                dañoFisico = 25;
+                dañoMagico = 15;
                 oro = 0;
             }
-            if (selecionpersonaje == 2) {
-                PS = 75;
-                PM = 70;
-                multiplicadordaño = 1.0;
-                dañofisico = 10;
-                dañomagico = 30;
+            if (seleccion == 2) {
+                PS = 90;
+                PM = 50;
+                multiplicador = 1.0;
+                dañoFisico = 15;
+                dañoMagico = 25;
                 oro = 0;
             }
-            if (selecionpersonaje == 3) {
+            if (seleccion == 3) {
                 PS = 100;
+                PM = 40;
+                multiplicador = 1.0;
+                dañoFisico = 20;
+                dañoMagico = 20;
+                oro = 0;
+            }
+            if (seleccion == 4) {
+                PS = 70;
+                PM = 60;
+                multiplicador = 0.9;
+                dañoFisico = 10;
+                dañoMagico = 30;
+                oro = 0;
+            }
+            if (seleccion == 5) {
+                PS = 80;
                 PM = 50;
-                multiplicadordaño = 1.0;
-                dañofisico = 15;
-                dañomagico = 35;
+                multiplicador = 1.0;
+                dañoFisico = 15;
+                dañoMagico = 25;
                 oro = 0;
             }
-            if (selecionpersonaje == 4) {
-                PS = 30;
-                PM = 75;
-                multiplicadordaño = 0.75;
-                dañofisico = 5;
-                dañomagico = 50;
+            if (seleccion == 6) {
+                PS = 100;
+                PM = 30;
+                multiplicador = 1.1;
+                dañoFisico = 30;
+                dañoMagico = 15;
                 oro = 0;
-            }
-            if (selecionpersonaje == 5) {
-                PS = 50;
-                PM = 50;
-                multiplicadordaño = 1.0;
-                dañofisico = 10;
-                dañomagico = 40;
-                oro = 0;
-            }
-            if (selecionpersonaje == 6) {
-                PS = 58;
-                PM = 22;
-                multiplicadordaño = 1.5;
-                dañofisico = 40;
-                dañomagico = 12;
-                oro = 0;
-            }
-            System.out.println("Has escojido " + selecionpersonaje);
-            System.out.println("Estas son tus stats ");
-            System.out.println("PS " + PS);
-            System.out.println("PM " + PM);
-            System.out.println("Multiplicador de daño " + multiplicadordaño);
-            System.out.println("Daño fisico " + dañofisico);
-            System.out.println("Daño magico " + dañomagico);
-            System.out.println("Oro " + oro);
-            System.out.println("Estas preparado para salir a el peligroso mundo de Barcelona, o quieres modificar tu personaje?");
-            String respuestamodificacionpersonaje = sc.nextLine();
-            if (respuestamodificacionpersonaje.equalsIgnoreCase("no")) {
-                continue;
-            } else if (respuestamodificacionpersonaje.equalsIgnoreCase("si")) {
-                break;
             }
 
-        }
-        while (true) {
-            String enemigoactual = enemigos[rand.nextInt(enemigos.length)];
-            System.out.println("Has salido a las peligrosas calles de Barcelona y ya encontraste tu primer enemigo " + enemigoactual);
-            switch (enemigoactual) {
-                case "amegosegarro":
+
+            System.out.println("Preparado para salir a las peligrosas calles de Barcelona?\uD83D\uDDE1\uFE0F ⚠\uFE0F");
+            String modificar = sc.nextLine();
+            if (modificar.equalsIgnoreCase("no")) continue;
+
+            while (true) {
+                int enemigoIndex = rand.nextInt(enemigos.length);
+                String enemigoActual = enemigos[enemigoIndex];
+                int PSenemigo = 0;
+                int dañoEnemigo = 0;
+                double multEnemigo = 1.0;
+
+                if (enemigoActual.equals("Amego Segarro")) {
                     PSenemigo = 80;
-                    multiplicadordañoenemigo = 1.0;
-                    dañoenemigo = 15;
-                    break;
-
-                case "Pedro Sanchez":
-                    PSenemigo = 250;
-                    multiplicadordañoenemigo = 1.5;
-                    dañoenemigo = 35;
-                    break;
-
-                case "Charo":
+                    dañoEnemigo = 10;
+                    multEnemigo = 1.0;
+                }
+                if (enemigoActual.equals("Pedro Sanchez")) {
+                    PSenemigo = 100;
+                    dañoEnemigo = 15;
+                    multEnemigo = 1.1;
+                }
+                if (enemigoActual.equals("Charo")) {
                     PSenemigo = 90;
-                    multiplicadordañoenemigo = 1.0;
-                    dañoenemigo = 18;
-                    break;
-
-                case "Maeb":
-                    PSenemigo = 300;
-                    multiplicadordañoenemigo = 1.2;
-                    dañoenemigo = 25;
-                    break;
-
-                case "Reina del brillo":
-                    PSenemigo = 200;
-                    multiplicadordañoenemigo = 1.3;
-                    dañoenemigo = 20;
-                    break;
-
-                case "Repartidor de uber eats":
-                    PSenemigo = 200;
-                    multiplicadordañoenemigo = 1.5;
-                    dañoenemigo = 50;
-                    break;
-            }
-            while (PS >= 0 && PSenemigo >= 0) {
-                System.out.println("Estas son las estas de tu enemigo " + enemigoactual);
-                System.out.println("PS = " + PSenemigo);
-                System.out.println("Multiplicador de daño = " + multiplicadordañoenemigo);
-                System.out.println("Daño = " + dañoenemigo);
-                System.out.println("Que accion vas a realizar para defenderte de este malechor?");
-                System.out.println("Tus opciones son:");
-                System.out.println("1. Ataque fisico");
-                System.out.println("2. Ataque magico");
-
-                String opciondeataque = sc.nextLine();
-                int ataque = rand.nextInt(6) + 1;
-                if (ataque == 1 || ataque == 2 || ataque == 3 || ataque == 4) {
-                    if (opciondeataque.equals("1")) {
-                        int dañofisicototal = (int) (dañofisico * multiplicadordaño);
-                        PSenemigo -= dañofisicototal;
-                        System.out.println("Has usado tu ataque fisico quitandole un total de " + dañofisicototal + " de vida a tu enemigo");
-                        System.out.println("Vida restante del enemigo: " + PSenemigo);
-                    }
-                    if (ataque == 5) {
-                        System.out.println("Has fallado el ataque y no hiciste daño a tu rival");
-                    }
-                    if (ataque == 6) {
-                        System.out.println("Has conseguido hacer un critico!!");
-                        System.out.println("Tu daño es multiplicado por 1.5 que de normal");
-                        int dañofisicototal = (int) ((dañofisico * multiplicadordaño) * 1.5);
-                    }
-
+                    dañoEnemigo = 12;
+                    multEnemigo = 1.0;
                 }
-                if (opciondeataque.equals(23) && PM >= 25) {
-                    if (opciondeataque.equals("2")) {
-                        int dañomagicototal = (int) (dañomagico * multiplicadordaño);
-                        PSenemigo -= dañomagicototal;
-                        System.out.println("Has usado tu ataque magico quitandole un total de " + dañomagicototal + " de vida a tu enemigo");
-                        System.out.println("Vida restante del enemigo: " + PSenemigo);
-                    } else if (PM < 25) {
-                        System.out.println("No tienes energia mistica para atacar con un ataque magico");
-                    }
-                    double dañototalenemigo = dañoenemigo * multiplicadordañoenemigo;
-                    System.out.println("El enemigo te ataco quitandote un total de " + dañototalenemigo);
-                    System.out.println("Dejandote a " + PS);
+                if (enemigoActual.equals("Maeb")) {
+                    PSenemigo = 110;
+                    dañoEnemigo = 14;
+                    multEnemigo = 1.1;
                 }
-            }
-            if (PSenemigo <= 0) {
-                PSenemigo += 5;
-                System.out.println("Enorabuena derrotaste a tu enemigo y defendiste españa de sus malechores");
-                System.out.println("Pero aun hay mucho camino por recorrer y muchos enemigos que derrotar");
-                System.out.println("Pero en tu larga travesia encuentras un magnifico kebab que te vende suministros, que deseas comprarle");
-                System.out.println("1. kebab + 25 de vida");
-                System.out.println("2. bandera de españa + 25 de PM");
-                System.out.println("3. spray de pimienta + 5 de daño fisico");
-                System.out.println("4. siesta descomunal + 0.05 de multiplicador de daño");
-                String item1 = "kebab";
-                String item2 = "banderadeespañ";
-                String item3 = "spraypimienta";
-                String item4 = "siestadescomunal";
-                int elecciondecompra = sc.nextInt();
-                String itemComprado = null;
-
-                switch (elecciondecompra) {
-                    case 1:
-                        PS += 25;
-                        itemComprado = item1;
-                        System.out.println("Compraste " + item1 + " PS actual: " + PS);
-                        break;
-                    case 2:
-                        PM += 25;
-                        itemComprado = item2;
-                        System.out.println("Compraste " + item2 + " PM actual: " + PM);
-                        break;
-                    case 3:
-                        dañofisico += 5;
-                        itemComprado = item3;
-                        System.out.println("Compraste " + item3 + " Daño físico actual: " + dañofisico);
-                        break;
-                    case 4:
-                        multiplicadordaño += 0.05;
-                        itemComprado = item4;
-                        System.out.println("Compraste " + item4 + " Multiplicador de daño actual: " + multiplicadordaño);
-                        break;
-                    default:
-                        System.out.println("No compraste nada.");
-                        break;
+                if (enemigoActual.equals("Reina del brillo")) {
+                    PSenemigo = 100;
+                    dañoEnemigo = 12;
+                    multEnemigo = 1.2;
+                }
+                if (enemigoActual.equals("Repartidor de Uber Eats")) {
+                    PSenemigo = 120;
+                    dañoEnemigo = 15;
+                    multEnemigo = 1.0;
                 }
 
-                if (itemComprado != null) {
-                    for (int i = 0; i < inventario.length; i++) {
-                        if (inventario[i] == null) {
-                            inventario[i] = itemComprado;
-                            break;
+                System.out.println("Te encuentras con: " + enemigoActual + "⚔\uFE0F \uD83D\uDCA5");
+
+                while (PS > 0 && PSenemigo > 0) {
+                    System.out.println("\uD83D\uDCCA\uD83D\uDCAATu PS: " + PS + " |\uD83D\uDEE1\uFE0F PS enemigo: " + PSenemigo + " |⚡ PM: " + PM);
+                    System.out.println("Elige acción: 1) Ataque físico ⚔\uFE0F 2) Ataque mágico ✨ 3) Huir \uD83C\uDFC3\u200D♂\uFE0F");
+                    String opcion = sc.nextLine();
+
+                    if (opcion.equals("1")) {
+                        int ataque = rand.nextInt(interaccion.length);
+                        int dañoTotal = 0;
+                        if (interaccion[ataque].equals("Normal")) {
+                            dañoTotal = (int) (dañoFisico * multiplicador);
+                        }
+                        if (interaccion[ataque].equals("Critico")) {
+                            dañoTotal = (int) (dañoFisico * multiplicador * 1.5);
+                        }
+                        if (interaccion[ataque].equals("Esquivado")) {
+                            dañoTotal = 0;
+                        }
+                        PSenemigo -= dañoTotal;
+                        System.out.println("Infliges " + dañoTotal + " de daño \uD83D\uDCA5 Vida enemiga: " + PSenemigo + " \uD83D\uDEE1\uFE0F");
+                    }
+
+                    if (opcion.equals("2")) {
+                        if (PM >= 25) {
+                            int dañoTotal = (int) (dañoMagico * multiplicador);
+                            PSenemigo -= dañoTotal;
+                            PM -= 25;
+                            System.out.println("Ataque mágico inflige " + dañoTotal + " de daño ✨\uD83D\uDCA5 Vida enemiga: " + PSenemigo + " \uD83D\uDEE1\uFE0F");
+                        } else {
+                            System.out.println("No tienes PM suficiente.");
                         }
                     }
+
+                    if (opcion.equals("3")) {
+                        oro -= 5;
+                        if (oro < 0) oro = 0;
+                        System.out.println("\uD83C\uDFC3\u200D♂\uFE0F\uD83D\uDCA8Huyes y pierdes \uD83E\uDE995 de oro.");
+                        break;
+                    }
+
+                    if (PSenemigo > 0) {
+                        int ataqueEnemigo = rand.nextInt(interaccion.length);
+                        int dañoTotal = dañoEnemigo;
+                        if (interaccion[ataqueEnemigo].equals("Critico")) {
+                            dañoTotal = dañoEnemigo * 2;
+                        }
+                        if (interaccion[ataqueEnemigo].equals("Esquivado")) {
+                            dañoTotal = 0;
+                        }
+                        PS -= dañoTotal;
+                        System.out.println("⚔\uFE0F\uD83D\uDC79 El enemigo te ataca y recibes " + dañoTotal + " de daño \uD83D\uDC94 Tu PS: " + PS);
+                    }
+
+                    PM += 10;
+                    if (PM > 50) PM = 50;
                 }
 
-                System.out.print("Inventario actual: ");
-                for (String it : inventario) {
-                    if (it != null) {
-                        System.out.print(it + ", ");
+                if (PS <= 0) {
+                    System.out.println("\uD83D\uDC80⚰\uFE0F Has muerto. Fin del juego\uD83C\uDFAE");
+                    return;
+                }
+
+                System.out.println("\uD83C\uDFC6\uD83C\uDF89Has derrotado a " + enemigoActual + "\uD83D\uDC80");
+                int oroGanado = rand.nextInt(5) + 1;
+                String itemGanado = recompensas[rand.nextInt(recompensas.length)];
+                oro += oroGanado;
+                for (int i = 0; i < inventario.length; i++) {
+                    if (inventario[i] == null) {
+                        inventario[i] = itemGanado;
+                        break;
                     }
                 }
-                break;
+                int vidaRecuperada = rand.nextInt(26) + 25;
+                PS += vidaRecuperada;
+                if (PS > 100) PS = 100;
+                System.out.println("Obtienes " + itemGanado + "\uD83C\uDF81 y " + oroGanado + " de oro recuperas " + vidaRecuperada + " PS\uD83D\uDC96");
+                System.out.print("Inventario: ");
+                for (int i = 0; i < inventario.length; i++) {
+                    if (inventario[i] != null) System.out.print(inventario[i] + ", ");
+                }
+                System.out.println("\uD83C\uDFAESeguir jugando? (✅si/❌no)");
+                String cont = sc.nextLine();
+                if (!cont.equalsIgnoreCase("si")) return;
             }
         }
     }
 }
-
-
-
