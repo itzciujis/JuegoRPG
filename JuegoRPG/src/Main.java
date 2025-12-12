@@ -7,7 +7,7 @@ public class Main {
         Random rand = new Random();
 
         String[] enemigos = {"Amego Segarro", "Pedro Sanchez", "Charo", "Maeb", "Reina del brillo", "Repartidor de Uber Eats"};
-        String[] recompensas = {"Segarro", "Liberacion de el comunismo", "Diploma de machista oficial",
+        String[] recompensas = {"Segarro", "Liberacion de el comunismo",
                 "Poder ancestral de la sabiduria", "Bicicleta de Uber Eats", "Cupon de 5 leuros",
                 "Liberacion de IVA", "Spray anti segarros"};
         String[] inventario = new String[10];
@@ -24,9 +24,9 @@ public class Main {
             System.out.println("Bienvenido al mundo de Barcelona, cómo te llamas? \uD83C\uDF06 \uD83D\uDCAC");
             String nombrePersonaje = sc.nextLine();
 
-            System.out.println("Elige tu clase: \uD83C \uDF93✨");
+            System.out.println("Elige tu clase: ✨");
             System.out.println("1. Caudillo de España \uD83D\uDEE1\uFE0F \uD83D\uDC51");
-            System.out.println("2. Socialista comunista ☭\uD83D \uDFE5");
+            System.out.println("2. Socialista comunista ☭");
             System.out.println("3. Persona normal \uD83D\uDE42");
             System.out.println("4. Enfermito del Twitter \uD83D\uDC26 \uD83E\uDD12");
             System.out.println("5. Emo sin futuro \uD83D\uDDA4 \uD83D\uDE14");
@@ -83,6 +83,8 @@ public class Main {
                 dañoMagico = 15;
                 oro = 0;
             }
+            int PS_MAX = PS;
+            int PM_MAX = PM;
 
 
             System.out.println("Preparado para salir a las peligrosas calles de Barcelona?\uD83D\uDDE1\uFE0F ⚠\uFE0F");
@@ -208,9 +210,117 @@ public class Main {
                 for (int i = 0; i < inventario.length; i++) {
                     if (inventario[i] != null) System.out.print(inventario[i] + ", ");
                 }
-                System.out.println("\uD83C\uDFAESeguir jugando? (✅si/❌no)");
-                String cont = sc.nextLine();
-                if (!cont.equalsIgnoreCase("si")) return;
+                switch (itemGanado) {
+                    case "Segarro":
+                        PS += 10;
+                        System.out.println("✨ El Ítem te da +10 PS");
+                        break;
+
+                    case "Liberacion del comunismo":
+                        dañoFisico += 5;
+                        System.out.println("⚔️ Tu daño físico aumenta +5");
+                        break;
+
+                    case "Diploma de machista oficial":
+                        dañoMagico += 5;
+                        System.out.println("🔥 Tu daño mágico aumenta +5");
+                        break;
+
+                    case "Poder ancestral de la sabiduria":
+                        multiplicador += 0.1;
+                        System.out.println("⚡ Tu multiplicador aumenta +0.1");
+                        break;
+
+                    case "Bicicleta de Uber Eats":
+                        dañoFisico += 8;
+                        System.out.println("🚴 Ganas +8 daño físico");
+                        break;
+
+                    case "Cupon de 5 leuros":
+                        oro += 5;
+                        System.out.println("🪙 Ganas +5 de oro");
+                        break;
+
+                    case "Liberacion de IVA":
+                        PS += 20;
+                        System.out.println("💖 Recuperas +20 PS");
+                        break;
+
+                    case "Spray anti segarros":
+                        multiplicador += 0.2;
+                        System.out.println("🧪 Multiplicador +0.2");
+                        break;
+                }
+
+                if (PS > 100) PS = 100;
+                if (multiplicador > 2.0) multiplicador = 2.0;
+
+                while (true) {
+                    System.out.println("               ______   ____  ____     ___  ____   ____    ____               \n" +
+                            "              |      | /    ||    \\   /  _]|    \\ |    \\  /    |              \n" +
+                            " _____  _____ |      ||  o  ||  o  ) /  [_ |  D  )|  _  ||  o  | _____  _____ \n" +
+                            "|     ||     ||_|  |_||     ||     ||    _]|    / |  |  ||     ||     ||     |\n" +
+                            "|_____||_____|  |  |  |  _  ||  O  ||   [_ |    \\ |  |  ||  _  ||_____||_____|\n" +
+                            "                |  |  |  |  ||     ||     ||  .  \\|  |  ||  |  |              \n" +
+                            "                |__|  |__|__||_____||_____||__|\\_||__|__||__|__|              \n" +
+                            "                                                                              ");
+                    System.out.println("Oro: " + oro);
+                    System.out.println("1. Poción de vida ❤\uFE0F (+25 PS)(15 oro)");
+                    System.out.println("2. Poción mágica ⚗\uFE0F (+25 PM)(15 oro)");
+                    System.out.println("3. Poción de daño \uD83E\uDDEA (+5 daño base)(30 oro)");
+                    System.out.println("4. Poción de daño extremo \uD83D\uDCA5 (+0.05 multiplicador)(50 oro)");
+                    System.out.println("5. Salir \uD83C\uDFC3");
+                    System.out.print("Cual quieres comprar: \uD83E\uDD14");
+
+                    int opcion = sc.nextInt();
+
+                    switch (opcion) {
+                        case 1:
+                            if (oro >= 15) {
+                                oro -= 15;
+                                PS += 25;
+                                if (PS > PS_MAX) PS = PS_MAX;
+                                System.out.println("Has usado una Poción de vida❤\uFE0F");
+                            } else System.out.println("Eres pobre vete a farmear⛏\uFE0F");
+                            break;
+
+                        case 2:
+                            if (oro >= 15) {
+                                oro -= 15;
+                                PM += 25;
+                                if (PM > PM_MAX) PM = PM_MAX;
+                                System.out.println("Has usado una Poción mágica⚗\uFE0F");
+                            } else System.out.println("Eres pobre vete a farmear⛏\uFE0F");
+                            break;
+
+                        case 3:
+                            if (oro >= 30) {
+                                oro -= 30;
+                                dañoFisico += 5;
+                                dañoMagico += 5;
+                                System.out.println("Tu daño base aumenta permanentemente\uD83E\uDDEA");
+                            } else System.out.println("Eres pobre vete a farmear⛏\uFE0F");
+                            break;
+
+                        case 4:
+                            if (oro >= 50) {
+                                oro -= 50;
+                                multiplicador += 0.05;
+                                System.out.println("Tu multiplicador aumenta permanentemente\uD83D\uDCA5");
+                            } else System.out.println("Eres pobre vete a farmear⛏\uFE0F");
+                            break;
+
+                        case 5:
+                            return;
+
+                        default:
+                            System.out.println("No sabes que solo hay numeros del 1 al 5?\uD83D\uDE24");
+                    }
+
+                    System.out.println("\uD83C\uDFAESeguir jugando? (✅si/❌no)");
+                    String cont = sc.nextLine();
+                    if (!cont.equalsIgnoreCase("si")) return;
+                }
             }
         }
     }
